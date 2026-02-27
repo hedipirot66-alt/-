@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پاسی پەیمانگا</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+:root{--p:#1a5276;--pl:#2980b9;--a:#f39c12;--bg:#0d1b2a;--bg2:#1a2a3a;--bg3:#243447;--card:#1e2f42;--t:#e8f4fd;--tm:#7fb3d3;--ok:#27ae60;--err:#e74c3c;--bd:rgba(41,128,185,0.3)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Naskh Arabic',serif;background:var(--bg);color:var(--t);min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(26,82,118,.3),transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(243,156,18,.1),transparent 50%);pointer-events:none;z-index:0}
+.scr{display:none;position:relative;z-index:1}.scr.on{display:block}
+.ac{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.ab{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:36px;width:100%;max-width:420px;animation:su .5s ease}
+@keyframes su{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.logo{text-align:center;margin-bottom:24px}
+.logo .ic{width:68px;height:68px;background:linear-gradient(135deg,var(--p),var(--a));border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 10px;box-shadow:0 4px 20px rgba(243,156,18,.3)}
+.logo h1{font-size:22px;font-weight:700}.logo p{color:var(--tm);font-size:13px;margin-top:3px}
+.rs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
+.rb{padding:12px 6px;border:2px solid var(--bd);border-radius:14px;background:var(--bg2);color:var(--tm);cursor:pointer;text-align:center;transition:all .2s;font-family:inherit;font-size:13px}
+.rb .ri{font-size:20px;display:block;margin-bottom:4px}
+.rb.act{border-color:var(--a);color:var(--a);background:rgba(243,156,18,.1)}
+.fg{margin-bottom:12px}.fg label{display:block;font-size:13px;color:var(--tm);margin-bottom:5px}
+.fg input{width:100%;padding:12px 14px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;color:var(--t);font-family:inherit;font-size:14px;direction:rtl}
+.fg input:focus{outline:none;border-color:var(--pl)}
+.bp{width:100%;padding:14px;background:linear-gradient(135deg,var(--p),var(--pl));border:none;border-radius:14px;color:#fff;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;margin-top:6px;transition:all .2s}
+.bp:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,82,118,.5)}
+.asw{text-align:center;margin-top:14px;color:var(--tm);font-size:14px}.asw a{color:var(--a);cursor:pointer}
+.hr{height:1px;background:var(--bd);margin:14px 0}
+.apc{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.ahd{background:var(--card);border-bottom:1px solid var(--bd);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
+.ahd h2{font-size:17px;font-weight:700}
+.hb{padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;background:var(--a);color:var(--bg)}
+.bb{background:var(--bg2);border:1px solid var(--bd);color:var(--t);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center}
+.tc{flex:1;padding:14px;overflow-y:auto;padding-bottom:82px}
+.bn{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--card);border-top:1px solid var(--bd);display:flex;padding:5px 0;z-index:200}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 4px;cursor:pointer;transition:all .2s;border:none;background:none;color:var(--tm);font-family:inherit;font-size:11px;position:relative}
+.ni .ic{font-size:21px}.ni.act{color:var(--a)}
+.nbg{position:absolute;top:3px;right:calc(50% - 20px);background:var(--err);color:#fff;width:15px;height:15px;border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:15px;margin-bottom:11px}
+.st{font-size:11px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin:14px 0 9px}
+.mw{height:240px;border-radius:16px;overflow:hidden;margin-bottom:13px;border:1px solid var(--bd);position:relative;z-index:1}
+.dmw{height:220px;border-radius:16px;overflow:hidden;margin-bottom:13px;border:1px solid var(--bd);position:relative;z-index:1}
+.leaflet-container{background:#1a2a3a!important}
+.eb{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:13px}
+.ec{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:13px;text-align:center}
+.en{font-size:30px;font-weight:700;color:var(--a);line-height:1}.el{font-size:12px;color:var(--tm);margin-top:4px}
+.br{display:flex;align-items:center;gap:12px}
+.bi{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.bn2{flex:1}.bnm{font-size:14px;font-weight:700;margin-bottom:3px}.bd2{font-size:13px;color:var(--tm)}
+.sb{padding:5px 9px;border-radius:20px;font-size:11px;font-weight:600}
+.so{background:rgba(39,174,96,.2);color:var(--ok)}.sn{background:rgba(243,156,18,.2);color:var(--a)}
+.pg{background:var(--bg3);border-radius:10px;height:7px;overflow:hidden;margin-top:9px}
+.pf{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--pl),var(--a))}
+.si{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.si:last-child{border-bottom:none}
+.sd{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.sdd{background:var(--ok)}.sda{background:var(--a);box-shadow:0 0 8px var(--a)}.sdf{background:var(--bg3);border:2px solid var(--bd)}
+.cbx{display:flex;flex-direction:column;gap:9px;min-height:260px;padding-bottom:6px}
+.msg{max-width:75%;padding:9px 13px;border-radius:14px;font-size:14px;line-height:1.5}
+.mr{background:var(--bg3);border:1px solid var(--bd);align-self:flex-start;border-bottom-right-radius:4px}
+.ms{background:linear-gradient(135deg,var(--p),var(--pl));align-self:flex-end;border-bottom-left-radius:4px}
+.mt{font-size:11px;color:var(--tm);margin-top:3px}
+.cbar{display:flex;gap:8px;margin-top:10px}
+.cin{flex:1;padding:11px 13px;background:var(--card);border:1px solid var(--bd);border-radius:12px;color:var(--t);font-family:inherit;font-size:14px;direction:rtl}
+.cin:focus{outline:none;border-color:var(--pl)}
+.snd{width:44px;height:44px;background:linear-gradient(135deg,var(--p),var(--pl));border:none;border-radius:12px;color:#fff;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.stars{display:flex;gap:5px;font-size:28px;margin:9px 0;direction:ltr}
+.star{cursor:pointer;transition:transform .15s;color:var(--bg3)}.star.on{color:var(--a)}.star:hover{transform:scale(1.2)}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:13px}
+.sc2{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:15px;text-align:center}
+.sn2{font-size:32px;font-weight:700;background:linear-gradient(135deg,var(--a),var(--pl));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sl2{font-size:12px;color:var(--tm);margin-top:4px}
+.tw{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:10px}
+.tgl{position:relative;width:50px;height:26px}.tgl input{opacity:0;width:0;height:0}
+.tsl{position:absolute;inset:0;background:var(--bg3);border-radius:26px;cursor:pointer;transition:.3s}
+.tsl:before{content:'';position:absolute;width:20px;height:20px;right:3px;top:3px;background:#fff;border-radius:50%;transition:.3s}
+.tgl input:checked + .tsl{background:var(--ok)}.tgl input:checked + .tsl:before{transform:translateX(-24px)}
+.al{padding:11px 13px;border-radius:12px;margin-bottom:11px;display:flex;align-items:center;gap:8px;font-size:14px}
+.ai{background:rgba(41,128,185,.15);border:1px solid rgba(41,128,185,.3)}
+.as{background:rgba(39,174,96,.15);border:1px solid rgba(39,174,96,.3)}
+.aw{background:rgba(243,156,18,.15);border:1px solid rgba(243,156,18,.3)}
+.li{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--bd)}.li:last-child{border-bottom:none}
+.bsm{padding:7px 11px;border-radius:10px;border:none;font-family:inherit;font-size:12px;cursor:pointer;font-weight:600}
+.ba{background:rgba(243,156,18,.2);color:var(--a)}.bss{background:rgba(39,174,96,.2);color:var(--ok)}.bdd{background:rgba(231,76,60,.2);color:var(--err)}
+.cw{display:flex;align-items:flex-end;gap:7px;height:76px;margin:11px 0}
+.cb{flex:1;background:linear-gradient(to top,var(--p),var(--pl));border-radius:4px 4px 0 0}
+.cl{display:flex;gap:7px;font-size:11px;color:var(--tm)}.cl span{flex:1;text-align:center}
+.phd{text-align:center;padding:18px 0 22px}
+.av{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--a));display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 11px;box-shadow:0 4px 20px rgba(243,156,18,.3)}
+.ntf{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-120px);background:var(--ok);color:#fff;padding:11px 22px;border-radius:12px;font-size:14px;font-weight:600;z-index:9999;transition:transform .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 20px rgba(0,0,0,.4);white-space:nowrap}
+.ntf.show{transform:translateX(-50%) translateY(0)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--bd);border-radius:4px}
+</style>
+</head>
+<body>
+<div class="ntf" id="ntf"></div>
+
+<!-- LOGIN -->
+<div class="scr on" id="s-login">
+<div class="ac"><div class="ab">
+  <div class="logo"><div class="ic">🚌</div><h1>پاسی پەیمانگا</h1><p>چوونەژوورەوە بە هەژمارەکەت</p></div>
+  <div class="fg"><label>ئیمەیل</label><input type="email" id="li-em" placeholder="ئیمەیلەکەت بنووسە"></div>
+  <div class="fg"><label>وشەی نهێنی</label><input type="password" placeholder="••••••••"></div>
+  <button class="bp" onclick="doLogin()">چوونەژوورەوە</button>
+  <div class="asw">هەژمارت نییە؟ <a onclick="show('s-reg')">تۆمارکردن</a></div>
+  <div class="hr"></div>
+  <p style="text-align:center;font-size:12px;color:var(--tm);margin-bottom:10px">دیمۆ — یەکێک هەڵبژێرە:</p>
+  <div style="display:flex;gap:8px">
+    <button class="bsm ba" style="flex:1;padding:10px" onclick="qLogin('student')">🎓 خوێندکار</button>
+    <button class="bsm bss" style="flex:1;padding:10px" onclick="qLogin('driver')">🚌 سایەق</button>
+    <button class="bsm" style="flex:1;padding:10px;background:rgba(41,128,185,.2);color:var(--pl)" onclick="qLogin('admin')">🏫 بەڕێوەبەر</button>
+  </div>
+</div></div>
+</div>
+
+<!-- REGISTER -->
+<div class="scr" id="s-reg">
+<div class="ac"><div class="ab">
+  <div class="logo"><div class="ic">📝</div><h1>تۆمارکردن</h1><p>هەژمارێکی نوێ دروست بکە</p></div>
+  <div class="rs">
+    <button class="rb act" id="rb-s" onclick="pickRole('student',this)"><span class="ri">🎓</span>خوێندکار</button>
+    <button class="rb" id="rb-d" onclick="pickRole('driver',this)"><span class="ri">🚌</span>سایەق</button>
+    <button class="rb" id="rb-a" onclick="pickRole('admin',this)"><span class="ri">🏫</span>بەڕێوەبەر</button>
+  </div>
+  <div class="fg"><label>ناوی تەواو</label><input type="text" placeholder="ناوت بنووسە"></div>
+  <div class="fg"><label>ژمارەی تەلەفۆن</label><input type="tel" placeholder="07xx xxx xxxx"></div>
+  <div class="fg"><label>ئیمەیل</label><input type="email" placeholder="ئیمەیلەکەت بنووسە"></div>
+  <div class="fg"><label>وشەی نهێنی</label><input type="password" placeholder="••••••••"></div>
+  <button class="bp" onclick="doReg()">تۆمارکردن</button>
+  <div class="asw">هەژمارت هەیە؟ <a onclick="show('s-login')">چوونەژوورەوە</a></div>
+</div></div>
+</div>
+
+<!-- STUDENT -->
+<div class="scr" id="s-student">
+<div class="apc">
+  <div class="ahd"><span class="hb">🎓 خوێندکار</span><h2>پاسی پەیمانگا</h2><button class="bb" onclick="logout()">🚪</button></div>
+
+  <div class="tc" id="sth">
+    <div class="al aw">🔔 پاسی ١ نزیکە! ١٥ خولەک تا گەیشتن</div>
+    <div class="mw" id="student-map"></div>
+    <div class="eb">
+      <div class="ec"><div class="en">١٥</div><div class="el">⏱ خولەک — پاسی ١</div></div>
+      <div class="ec"><div class="en">٣٢</div><div class="el">⏱ خولەک — پاسی ٢</div></div>
+    </div>
+    <div class="st">پاسەکان</div>
+    <div class="card"><div class="br"><div class="bi" style="background:rgba(243,156,18,.15)">🚌</div><div class="bn2"><div class="bnm">پاسی ١ — ئەحمەد عەلی</div><div class="bd2">📍 ٢ کم · ١٥ خولەک</div></div><span class="sb sn">نزیکە</span></div><div class="pg"><div class="pf" style="width:65%"></div></div></div>
+    <div class="card"><div class="br"><div class="bi" style="background:rgba(39,174,96,.15)">🚌</div><div class="bn2"><div class="bnm">پاسی ٢ — کاروان محمد</div><div class="bd2">📍 ٥ کم · ٣٢ خولەک</div></div><span class="sb so">دەستبەکار</span></div><div class="pg"><div class="pf" style="width:30%"></div></div></div>
+    <div class="st">شوێنەکانی وەستان</div>
+    <div class="card">
+      <div class="si"><div class="sd sdd"></div><div style="flex:1"><div style="font-size:14px">دەروازەی سەرەکی</div><div style="font-size:12px;color:var(--tm)">تێپەڕیوە ٠٧:٣٠</div></div><span style="color:var(--ok)">✓</span></div>
+      <div class="si"><div class="sd sda"></div><div style="flex:1"><div style="font-size:14px;color:var(--a)">گۆڕەپانی مەرکەزی ← ئێستا</div><div style="font-size:12px;color:var(--tm)">١٥ خولەک تا گەیشتن</div></div><span style="color:var(--a)">●</span></div>
+      <div class="si"><div class="sd sdf"></div><div style="flex:1"><div style="font-size:14px;color:var(--tm)">کۆلێژی تەکنیک</div><div style="font-size:12px;color:var(--tm)">٠٨:٠٠</div></div></div>
+      <div class="si"><div class="sd sdf"></div><div style="flex:1"><div style="font-size:14px;color:var(--tm)">پەیمانگا — کۆتایی</div><div style="font-size:12px;color:var(--tm)">٠٨:٢٠</div></div></div>
+    </div>
+  </div>
+
+  <div class="tc" id="stc" style="display:none">
+    <div id="drvlist">
+      <div class="st">بنێرە بۆ سایەق</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="card" style="cursor:pointer;text-align:center" onclick="openChat('ئەحمەد عەلی')">
+          <div style="font-size:28px">🚌</div><div style="font-weight:700;margin-top:6px">ئەحمەد عەلی</div>
+          <div style="font-size:12px;color:var(--tm)">پاسی ١</div>
+          <span class="sb sn" style="display:inline-block;margin-top:8px">٢ نامە</span>
+        </div>
+        <div class="card" style="cursor:pointer;text-align:center" onclick="openChat('کاروان محمد')">
+          <div style="font-size:28px">🚌</div><div style="font-weight:700;margin-top:6px">کاروان محمد</div>
+          <div style="font-size:12px;color:var(--tm)">پاسی ٢</div>
+          <span class="sb so" style="display:inline-block;margin-top:8px">دەستبەکار</span>
+        </div>
+      </div>
+    </div>
+    <div id="chatbox" style="display:none">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <button class="bb" onclick="closeChat()">←</button>
+        <div><div style="font-weight:700" id="cname">ئەحمەد</div><div style="font-size:12px;color:var(--ok)">● ئۆنلاین</div></div>
+      </div>
+      <div class="cbx" id="cmsgs">
+        <div class="msg mr">سڵاو، پاسەکە ئێستا لە ڕێگایە<div class="mt">٠٧:٣٠</div></div>
+        <div class="msg ms">چەند خولەک تا گەیشتن؟<div class="mt">٠٧:٣١</div></div>
+        <div class="msg mr">نزیکەی ١٥ خولەک، ئامادە بە 🚌<div class="mt">٠٧:٣٢</div></div>
+      </div>
+      <div class="cbar"><input class="cin" id="min" placeholder="نامەکەت بنووسە..." onkeydown="if(event.key==='Enter')sndMsg()"><button class="snd" onclick="sndMsg()">➤</button></div>
+    </div>
+  </div>
+
+  <div class="tc" id="str" style="display:none">
+    <div class="st">هەڵسەنگاندنی سایەقەکان</div>
+    <div class="card">
+      <div class="br" style="margin-bottom:10px"><div class="bi" style="background:rgba(243,156,18,.15)">👨‍✈️</div><div class="bn2"><div class="bnm">ئەحمەد عەلی</div><div class="bd2">پاسی ١ · ⭐ ٤.٥</div></div></div>
+      <div class="stars" id="sr1"><span class="star" onclick="rstar('sr1',1)">★</span><span class="star" onclick="rstar('sr1',2)">★</span><span class="star" onclick="rstar('sr1',3)">★</span><span class="star" onclick="rstar('sr1',4)">★</span><span class="star" onclick="rstar('sr1',5)">★</span></div>
+      <textarea style="width:100%;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;color:var(--t);font-family:inherit;padding:10px;font-size:13px;resize:none;direction:rtl" rows="2" placeholder="کۆمەنتەکەت (ئارەزووی)"></textarea>
+      <button class="bp" style="margin-top:10px" onclick="ntf2('هەڵسەنگاندنەکەت نێردرا! ⭐')">ناردن</button>
+    </div>
+    <div class="card">
+      <div class="br" style="margin-bottom:10px"><div class="bi" style="background:rgba(39,174,96,.15)">👨‍✈️</div><div class="bn2"><div class="bnm">کاروان محمد</div><div class="bd2">پاسی ٢ · ⭐ ٤.٨</div></div></div>
+      <div class="stars" id="sr2"><span class="star on" onclick="rstar('sr2',1)">★</span><span class="star on" onclick="rstar('sr2',2)">★</span><span class="star on" onclick="rstar('sr2',3)">★</span><span class="star on" onclick="rstar('sr2',4)">★</span><span class="star" onclick="rstar('sr2',5)">★</span></div>
+      <button class="bp" style="margin-top:10px" onclick="ntf2('هەڵسەنگاندنەکەت نێردرا! ⭐')">ناردن</button>
+    </div>
+  </div>
+
+  <div class="tc" id="stp" style="display:none">
+    <div class="phd"><div class="av">🎓</div><div style="font-size:18px;font-weight:700">سارا ئەحمەد</div><div style="color:var(--tm);font-size:14px;margin-top:4px">خوێندکار — کۆلێژی تەکنیک</div></div>
+    <div class="card">
+      <div class="li"><span>📱 ژمارەی تەلەفۆن</span><span style="color:var(--tm);font-size:14px">0750 123 4567</span></div>
+      <div class="li"><span>🚌 پاسی دیاریکراو</span><span style="color:var(--a);font-size:14px">پاسی ١</span></div>
+      <div class="li" style="border:none"><span>⭐ هەڵسەنگاندنەکانم</span><span style="color:var(--tm);font-size:14px">٣ هەڵسەنگاندن</span></div>
+    </div>
+    <div class="st">ڕێکخستنەکان</div>
+    <div class="tw"><span>🔔 ئاگادارکردنەوە</span><label class="tgl"><input type="checkbox" checked><span class="tsl"></span></label></div>
+    <button class="bp" style="margin-top:12px;background:rgba(231,76,60,.2);color:var(--err)" onclick="logout()">🚪 چوونەدەرەوە</button>
+  </div>
+
+  <nav class="bn">
+    <button class="ni act" onclick="stab('sth',this)"><span class="ic">🗺️</span>نەخشە</button>
+    <button class="ni" onclick="stab('stc',this)"><span class="ic">💬</span>چات</button>
+    <button class="ni" onclick="stab('str',this)"><span class="ic">⭐</span>هەڵسەنگاندن</button>
+    <button class="ni" onclick="stab('stp',this)"><span class="ic">👤</span>پرۆفایل</button>
+  </nav>
+</div>
+</div>
+
+<!-- DRIVER -->
+<div class="scr" id="s-driver">
+<div class="apc">
+  <div class="ahd"><span class="hb" style="background:var(--ok);color:#fff">🚌 سایەق</span><h2>پاسی پەیمانگا</h2><button class="bb" onclick="logout()">🚪</button></div>
+
+  <div class="tc" id="drh">
+    <div class="tw">
+      <div><div style="font-weight:700">شەێردانی شوێن</div><div style="font-size:12px;color:var(--tm);margin-top:2px">٠٥:٠٠ بەیانی — ٢:٠٠ دوانیوەڕۆ</div></div>
+      <label class="tgl"><input type="checkbox" id="ltog" onchange="togLoc(this)"><span class="tsl"></span></label>
+    </div>
+    <div class="al ai" id="lstat">⚠️ شوێنەکەت ئێستا بەرچاو نییە</div>
+    <div class="dmw" id="driver-map"></div>
+    <div class="st">ئامارەکانی ئەمەیلە</div>
+    <div class="sg">
+      <div class="sc2"><div class="sn2">٢٤</div><div class="sl2">خوێندکاری سواری</div></div>
+      <div class="sc2"><div class="sn2">٤.٥</div><div class="sl2">⭐ نرخی تازە</div></div>
+    </div>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:11px">کاتی گەشتەکان</div>
+      <div class="cw"><div class="cb" style="height:60%"></div><div class="cb" style="height:80%"></div><div class="cb" style="height:45%"></div><div class="cb" style="height:90%"></div><div class="cb" style="height:70%"></div><div class="cb" style="height:55%"></div><div class="cb" style="height:85%"></div></div>
+      <div class="cl"><span>شەممە</span><span>یەک</span><span>دوو</span><span>سێ</span><span>چوار</span><span>پێنج</span><span>جومعە</span></div>
+    </div>
+  </div>
+
+  <div class="tc" id="drm" style="display:none">
+    <div id="dclist">
+      <div class="st">نامەکانی خوێندکاران</div>
+      <div class="card" style="cursor:pointer" onclick="openDrChat('سارا ئەحمەد')">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:44px;height:44px;background:linear-gradient(135deg,var(--p),var(--a));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">🎓</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:14px">سارا ئەحمەد</div><div style="font-size:13px;color:var(--tm)">چەند خولەک تا گەیشتن؟</div></div>
+          <div style="text-align:left"><div style="font-size:11px;color:var(--tm)">٠٧:٣١</div><div style="background:var(--err);color:#fff;width:17px;height:17px;border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;margin:4px 0 0 auto">٢</div></div>
+        </div>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="openDrChat('ئارام کریم')">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:44px;height:44px;background:linear-gradient(135deg,var(--ok),var(--p));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px">🎓</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:14px">ئارام کریم</div><div style="font-size:13px;color:var(--tm)">باشم، سوپاس</div></div>
+          <div style="font-size:11px;color:var(--tm)">٠٧:١٥</div>
+        </div>
+      </div>
+    </div>
+    <div id="drchat" style="display:none">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <button class="bb" onclick="closeDrChat()">←</button>
+        <div><div style="font-weight:700" id="dcname">سارا</div><div style="font-size:12px;color:var(--ok)">● ئۆنلاین</div></div>
+      </div>
+      <div class="cbx" id="dcmsgs"><div class="msg mr">چەند خولەک تا گەیشتن؟<div class="mt">٠٧:٣١</div></div></div>
+      <div class="cbar"><input class="cin" id="dmin" placeholder="وەڵامی بدەرەوە..." onkeydown="if(event.key==='Enter')drSnd()"><button class="snd" onclick="drSnd()">➤</button></div>
+    </div>
+  </div>
+
+  <div class="tc" id="drr" style="display:none">
+    <div class="st">هەڵسەنگاندنەکانم</div>
+    <div class="card" style="text-align:center;padding:22px">
+      <div style="font-size:54px;font-weight:700;color:var(--a)">٤.٥</div>
+      <div class="stars" style="justify-content:center;direction:ltr;font-size:26px"><span style="color:var(--a)">★★★★</span><span style="color:var(--bg3)">★</span></div>
+      <div style="color:var(--tm);font-size:13px;margin-top:5px">لە ٤٢ هەڵسەنگاندن</div>
+    </div>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:11px">داڕشتن</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:12px;min-width:24px">٥★</span><div class="pg" style="flex:1"><div class="pf" style="width:60%"></div></div><span style="font-size:12px;color:var(--tm)">٢٥</span></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:12px;min-width:24px">٤★</span><div class="pg" style="flex:1"><div class="pf" style="width:30%"></div></div><span style="font-size:12px;color:var(--tm)">١٢</span></div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;min-width:24px">٣★</span><div class="pg" style="flex:1"><div class="pf" style="width:12%"></div></div><span style="font-size:12px;color:var(--tm)">٥</span></div>
+    </div>
+    <div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-weight:700;font-size:14px">سارا ئەحمەد</span><span style="color:var(--a)">★★★★★</span></div><p style="font-size:13px;color:var(--tm)">سایەقی زۆر باش، هەمیشە کاتژمێری دەپارێزێت</p></div>
+    <div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-weight:700;font-size:14px">ئارام کریم</span><span style="color:var(--a)">★★★★</span></div><p style="font-size:13px;color:var(--tm)">گەشتی باش، مەرسی</p></div>
+  </div>
+
+  <div class="tc" id="drp" style="display:none">
+    <div class="phd"><div class="av">🚌</div><div style="font-size:18px;font-weight:700">ئەحمەد عەلی</div><div style="color:var(--tm);font-size:14px;margin-top:4px">سایەقی پاسی ١</div></div>
+    <div class="card">
+      <div class="li"><span>📱 ژمارەی تەلەفۆن</span><span style="color:var(--tm);font-size:14px">0770 987 6543</span></div>
+      <div class="li"><span>🚌 ژمارەی پاس</span><span style="color:var(--a);font-size:14px">پاسی ١</span></div>
+      <div class="li" style="border:none"><span>⭐ نرخی گشتی</span><span style="color:var(--a);font-size:14px">٤.٥ / ٥</span></div>
+    </div>
+    <button class="bp" style="margin-top:12px;background:rgba(231,76,60,.2);color:var(--err)" onclick="logout()">🚪 چوونەدەرەوە</button>
+  </div>
+
+  <nav class="bn">
+    <button class="ni act" onclick="dtab('drh',this)"><span class="ic">🗺️</span>نەخشە</button>
+    <button class="ni" onclick="dtab('drm',this)" style="position:relative"><span class="ic">💬</span>نامەکان<span class="nbg">٢</span></button>
+    <button class="ni" onclick="dtab('drr',this)"><span class="ic">⭐</span>هەڵسەنگاندن</button>
+    <button class="ni" onclick="dtab('drp',this)"><span class="ic">👤</span>پرۆفایل</button>
+  </nav>
+</div>
+</div>
+
+<!-- ADMIN -->
+<div class="scr" id="s-admin">
+<div class="apc">
+  <div class="ahd"><span class="hb" style="background:var(--pl);color:#fff">🏫 بەڕێوەبەر</span><h2>داشبۆرد</h2><button class="bb" onclick="logout()">🚪</button></div>
+
+  <div class="tc" id="add">
+    <div class="sg">
+      <div class="sc2"><div class="sn2">١٤٢</div><div class="sl2">خوێندکار تۆمارکراو</div></div>
+      <div class="sc2"><div class="sn2">٢</div><div class="sl2">سایەقی چالاک</div></div>
+      <div class="sc2"><div class="sn2">٩٨</div><div class="sl2">سواری ئەمەیلە</div></div>
+      <div class="sc2"><div class="sn2">٤.٧</div><div class="sl2">⭐ نرخی گشتی</div></div>
+    </div>
+    <div class="st">چالاکترین کات</div>
+    <div class="card">
+      <div class="cw"><div class="cb" style="height:40%"></div><div class="cb" style="height:90%"></div><div class="cb" style="height:70%"></div><div class="cb" style="height:50%"></div><div class="cb" style="height:30%"></div><div class="cb" style="height:20%"></div><div class="cb" style="height:15%"></div><div class="cb" style="height:10%"></div></div>
+      <div class="cl"><span>٥ص</span><span>٦ص</span><span>٧ص</span><span>٨ص</span><span>١٢</span><span>١</span><span>١.٣٠</span><span>٢</span></div>
+      <p style="font-size:12px;color:var(--tm);text-align:center;margin-top:8px">زۆرترین قەلەبەڵغ: ٦:٣٠ بەیانی</p>
+    </div>
+    <div class="st">دۆخی پاسەکان</div>
+    <div class="card"><div class="br"><div class="bi" style="background:rgba(243,156,18,.15)">🚌</div><div class="bn2"><div class="bnm">پاسی ١ — ئەحمەد</div><div class="bd2">٢٤ خوێندکار · ٤.٥⭐</div></div><span class="sb so">چالاک</span></div></div>
+    <div class="card"><div class="br"><div class="bi" style="background:rgba(39,174,96,.15)">🚌</div><div class="bn2"><div class="bnm">پاسی ٢ — کاروان</div><div class="bd2">٢٨ خوێندکار · ٤.٨⭐</div></div><span class="sb so">چالاک</span></div></div>
+  </div>
+
+  <div class="tc" id="adu" style="display:none">
+    <div class="st">سایەقەکان</div>
+    <div class="card">
+      <div class="li"><div><div style="font-weight:700">ئەحمەد عەلی</div><div style="font-size:12px;color:var(--tm)">پاسی ١ · ٤.٥⭐</div></div><div style="display:flex;gap:6px"><button class="bsm bss">✓ چالاک</button><button class="bsm bdd">✗</button></div></div>
+      <div class="li" style="border:none"><div><div style="font-weight:700">کاروان محمد</div><div style="font-size:12px;color:var(--tm)">پاسی ٢ · ٤.٨⭐</div></div><div style="display:flex;gap:6px"><button class="bsm bss">✓ چالاک</button><button class="bsm bdd">✗</button></div></div>
+    </div>
+    <div class="st">خوێندکارەکان</div>
+    <div class="card">
+      <div class="li"><div><div style="font-weight:700">سارا ئەحمەد</div><div style="font-size:12px;color:var(--tm)">پاسی ١ · کۆلێژی تەکنیک</div></div><button class="bsm ba">بینین</button></div>
+      <div class="li"><div><div style="font-weight:700">ئارام کریم</div><div style="font-size:12px;color:var(--tm)">پاسی ٢ · کۆلێژی زانست</div></div><button class="bsm ba">بینین</button></div>
+      <div class="li" style="border:none"><div><div style="font-weight:700">لارا محمد</div><div style="font-size:12px;color:var(--tm)">پاسی ١ · کۆلێژی هونەر</div></div><button class="bsm ba">بینین</button></div>
+    </div>
+  </div>
+
+  <div class="tc" id="adr" style="display:none">
+    <div class="st">ڕاپۆرتی هەفتانە</div>
+    <div class="al as">✅ ئەمەیلە هەردوو پاسەکان کاریان کرد</div>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:11px">سواری هەفتانە</div>
+      <div class="cw"><div class="cb" style="height:70%"></div><div class="cb" style="height:85%"></div><div class="cb" style="height:60%"></div><div class="cb" style="height:90%"></div><div class="cb" style="height:75%"></div></div>
+      <div class="cl"><span>شەممە</span><span>یەک</span><span>دوو</span><span>سێ</span><span>چوار</span></div>
+    </div>
+    <div class="sg">
+      <div class="sc2"><div class="sn2">٤٨٧</div><div class="sl2">سواری ئەمساڵ</div></div>
+      <div class="sc2"><div class="sn2">٩٨٪</div><div class="sl2">ڕێژەی کاتەوەیی</div></div>
+    </div>
+  </div>
+
+  <div class="tc" id="adp" style="display:none">
+    <div class="phd"><div class="av">🏫</div><div style="font-size:18px;font-weight:700">بەڕێوەبەری پەیمانگا</div><div style="color:var(--tm);font-size:14px;margin-top:4px">ئەدمینی سیستەم</div></div>
+    <div class="card">
+      <div class="li"><span>📧 ئیمەیل</span><span style="color:var(--tm);font-size:13px">admin@college.edu</span></div>
+      <div class="li" style="border:none"><span>🔑 دەسەڵات</span><span style="color:var(--a);font-size:14px">بەڕێوەبەری گشتی</span></div>
+    </div>
+    <button class="bp" style="margin-top:12px;background:rgba(231,76,60,.2);color:var(--err)" onclick="logout()">🚪 چوونەدەرەوە</button>
+  </div>
+
+  <nav class="bn">
+    <button class="ni act" onclick="atab('add',this)"><span class="ic">📊</span>داشبۆرد</button>
+    <button class="ni" onclick="atab('adu',this)"><span class="ic">👥</span>بەکارهێنەران</button>
+    <button class="ni" onclick="atab('adr',this)"><span class="ic">📈</span>ڕاپۆرت</button>
+    <button class="ni" onclick="atab('adp',this)"><span class="ic">👤</span>پرۆفایل</button>
+  </nav>
+</div>
+</div>
+
+<script>
+// HELPERS
+function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on')}
+function ntf2(msg,col){const n=document.getElementById('ntf');n.textContent=msg;n.style.background=col||'#27ae60';n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3000)}
+function tnow(){const d=new Date();return d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')}
+
+// AUTH
+let pRole='student';
+function pickRole(r,btn){pRole=r;document.querySelectorAll('.rb').forEach(b=>b.classList.remove('act'));btn.classList.add('act')}
+function doLogin(){const em=document.getElementById('li-em').value;let r='student';if(em.includes('driver')||em.includes('سایەق'))r='driver';else if(em.includes('admin')||em.includes('ئەدمین'))r='admin';qLogin(r)}
+function qLogin(r){if(r==='student'){show('s-student');setTimeout(initSMap,400)}else if(r==='driver'){show('s-driver');setTimeout(initDMap,400)}else show('s-admin');ntf2('بەخێربێیت! ✓')}
+function doReg(){ntf2('هەژمارت دروستکرا! ✓');setTimeout(()=>qLogin(pRole),800)}
+function logout(){show('s-login');ntf2('چوویتە دەرەوە','#e74c3c')}
+
+// TABS
+function stab(id,btn){['sth','stc','str','stp'].forEach(t=>{const e=document.getElementById(t);if(e)e.style.display='none'});document.getElementById(id).style.display='block';document.querySelectorAll('#s-student .ni').forEach(b=>b.classList.remove('act'));btn.classList.add('act');if(id==='sth')setTimeout(initSMap,100)}
+function dtab(id,btn){['drh','drm','drr','drp'].forEach(t=>{const e=document.getElementById(t);if(e)e.style.display='none'});document.getElementById(id).style.display='block';document.querySelectorAll('#s-driver .ni').forEach(b=>b.classList.remove('act'));btn.classList.add('act');if(id==='drh')setTimeout(initDMap,100)}
+function atab(id,btn){['add','adu','adr','adp'].forEach(t=>{const e=document.getElementById(t);if(e)e.style.display='none'});document.getElementById(id).style.display='block';document.querySelectorAll('#s-admin .ni').forEach(b=>b.classList.remove('act'));btn.classList.add('act')}
+
+// CHAT
+function openChat(n){document.getElementById('drvlist').style.display='none';document.getElementById('chatbox').style.display='block';document.getElementById('cname').textContent=n}
+function closeChat(){document.getElementById('drvlist').style.display='block';document.getElementById('chatbox').style.display='none'}
+function sndMsg(){const i=document.getElementById('min');const t=i.value.trim();if(!t)return;const b=document.getElementById('cmsgs');b.innerHTML+=`<div class="msg ms">${t}<div class="mt">${tnow()}</div></div>`;i.value='';b.scrollTop=9999;setTimeout(()=>{b.innerHTML+=`<div class="msg mr">باشە، نزیکدەبینەوە 🚌<div class="mt">${tnow()}</div></div>`;b.scrollTop=9999},1200)}
+function openDrChat(n){document.getElementById('dclist').style.display='none';document.getElementById('drchat').style.display='block';document.getElementById('dcname').textContent=n;const nb=document.querySelector('#s-driver .nbg');if(nb)nb.style.display='none'}
+function closeDrChat(){document.getElementById('dclist').style.display='block';document.getElementById('drchat').style.display='none'}
+function drSnd(){const i=document.getElementById('dmin');const t=i.value.trim();if(!t)return;const b=document.getElementById('dcmsgs');b.innerHTML+=`<div class="msg ms">${t}<div class="mt">${tnow()}</div></div>`;i.value='';b.scrollTop=9999}
+
+// STARS
+function rstar(id,val){document.querySelectorAll('#'+id+' .star').forEach((s,i)=>s.classList.toggle('on',i<val))}
+
+// DRIVER TOGGLE
+function togLoc(el){const s=document.getElementById('lstat');if(el.checked){s.className='al as';s.textContent='✅ شوێنەکەت بەرچاوە — خوێندکاران دەیبیننە';ntf2('شوێنەکەت چالاک بووە 📍')}else{s.className='al ai';s.textContent='⚠️ شوێنەکەت ئێستا بەرچاو نییە'}}
+
+// MAPS - using iframe OpenStreetMap (no external JS needed)
+function initSMap(){
+  const el=document.getElementById('student-map');
+  if(!el||el.querySelector('iframe'))return;
+  el.innerHTML=`<iframe
+    src="https://www.openstreetmap.org/export/embed.html?bbox=45.4050%2C35.5400%2C45.4550%2C35.5700&layer=mapnik&marker=35.5578%2C45.4329"
+    style="width:100%;height:100%;border:none;"
+    loading="lazy"
+    title="ماپی پەیمانگا">
+  </iframe>
+  <div style="position:absolute;top:8px;right:8px;background:rgba(13,27,42,.85);border-radius:10px;padding:6px 10px;font-size:12px;color:#e8f4fd;border:1px solid rgba(41,128,185,.4);z-index:10;pointer-events:none">
+    🚌 شوێنی پاسەکان — سلێمانی
+  </div>`;
+  el.style.position='relative';
+}
+
+function initDMap(){
+  const el=document.getElementById('driver-map');
+  if(!el||el.querySelector('iframe'))return;
+  el.innerHTML=`<iframe
+    src="https://www.openstreetmap.org/export/embed.html?bbox=45.4050%2C35.5400%2C45.4550%2C35.5700&layer=mapnik&marker=35.5490%2C45.4150"
+    style="width:100%;height:100%;border:none;"
+    loading="lazy"
+    title="شوێنی سایەق">
+  </iframe>
+  <div style="position:absolute;top:8px;right:8px;background:rgba(13,27,42,.85);border-radius:10px;padding:6px 10px;font-size:12px;color:#e8f4fd;border:1px solid rgba(41,128,185,.4);z-index:10;pointer-events:none">
+    📍 شوێنی ئێستاتان — سلێمانی
+  </div>`;
+  el.style.position='relative';
+}
+</script>
+</body>
+</html>
